@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stock-server
+  template:
+    metadata:
+      labels:
+        app: stock-server
+    spec:
+      containers:
+        - name: stock-server
+          image: server-image:v1.0
+          ports:
+            - containerPort: 18871
+          env:
+            - name: ALPHA_VANTAGE_API_KEY
+              value: "9GZVID1I1M2J2I0B"
+            - name: STOCK_API_PORT
+              value: "18871"
+            - name: REDIS_PORT
+              value: "6379"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stock-server-service
+spec:
+  selector:
+    app: stock-server
+  ports:
+    - name: stock-server
+      protocol: TCP
+      port: 18871
+      targetPort: 18871

@@ -1,6 +1,6 @@
 # DistributedSystemsArchitecture
 
-Distributed Systems Architecture - project used for educational purposes. It consist of client which requests for stock prices. The server has 3 replicas and is implemented in Kubernetes cluster.
+Distributed Systems Architecture - project used for educational purposes. It consist of client which requests for stock prices. The server has 3 replicas and is implemented in Kubernetes cluster. Within the cluster there is load balancer and redis server in order to store the cache for the replicas in centralized place.
 
 --->>>INSTRUCTIONS HOW TO RUN THE PROJECT<<<---
 Guessing you have Docker Desktop insalled with Enabled Kubernetes:
